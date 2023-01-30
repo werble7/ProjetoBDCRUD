@@ -176,7 +176,7 @@ def menuPrincipal():
         elif opcao == 2:
             telaRead()
         elif opcao == 3:
-            pass
+            telaUpdate()
         elif opcao == 4:
             telaDelete()
         input("Pressione enter para voltar!")
@@ -184,7 +184,7 @@ def menuPrincipal():
 
 def telaCreate():
     while True:
-        print('-------------------------Tabelas-------------------------')
+        print('-------------------------CREATE-------------------------')
         print('1.- Arbitro')
         print('2.- Estadio')
         print('3.- Lesao')
@@ -239,7 +239,7 @@ def telaCreate():
 
 def telaRead():
     while True:
-        print('-------------------------Tabelas-------------------------')
+        print('-------------------------READ-------------------------')
         print('1.- Arbitro')
         print('2.- Estadio')
         print('3.- Lesao')
@@ -323,9 +323,71 @@ def telaRead():
         input("Digite enter para voltar")
 
 
+def telaUpdate():
+    while True:
+        print('-------------------------UPDATE-------------------------')
+        print('1.- Arbitro')
+        print('2.- Estadio')
+        print('3.- Lesao')
+        print('4.- Competicao')
+        print('5.- Tecnico')
+        print('6.- Clube')
+        print('7.- Jogador')
+        print('8.- LesaoJogador')
+        print('9.- Jogo')
+        print('10.- CartaoJogador')
+        print('11.- CartaoTecnico')
+        print('12.- Titulo')
+        print('13.- Sair')
+        print('----------------------------------------------------------')
+
+        print("Selecione uma tabela: ")
+        opcao = int(input())
+
+        if opcao == 1:
+            print("digite o id do arbitro a ser mudado: ")
+            id = int(input())
+            print('Digite o nome do arbitro: ')
+            nome = input()
+            print('Digite a data de nascimento do arbitro (YYYY-MM-DD)')
+            datanasc = input()
+            print('Digite o numero de jogos apitados pelo arbitro')
+            qtdJogos = int(input())
+            print('Digite a data de estreia do arbitro (YYYY-MM-DD')
+            dataEstreia = input()
+            comando = f"update arbitro set nome = '{nome}', datanasc = '{datanasc}', qtdjogos = '{str(qtdJogos)}', dataEstreia = '{dataEstreia}' where idArbitro = {id}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 2:
+            print("digite o id do estadio a ser mudado: ")
+            id = int(input())
+            print('Digite o nome do estádio: ')
+            nome = input()
+            print('Digite a data de inaugaração do estádio (YYYY-MM-DD): ')
+            dataInaug = input()
+            print('Digite o valor do estádio: ')
+            valor = float(input())
+            print('Digite a capacidade do estádio: ')
+            capac = int(input())
+            comando = f"update estadio set nome = '{nome}', dataInaug = '{dataInaug}', valor = '{str(valor)}', capacidade = '{str(capac)}' where idEstadio = {id}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 3:
+            print("Digite o id da lesão a ser mudada: ")
+            id = int(input())
+            print("Digite a descrição da lesão")
+            desc = input()
+            comando = f"update lesao set descricao = '{desc}' where idLesao = {id}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 13:
+            break
+        input("Digite enter para voltar")
+
+
 def telaDelete():
     while True:
-        print('-------------------------Tabelas-------------------------')
+        print('-------------------------DELETE-------------------------')
         print('1.- Arbitro')
         print('2.- Estadio')
         print('3.- Lesao')
