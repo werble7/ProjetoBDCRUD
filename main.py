@@ -161,7 +161,7 @@ def menuPrincipal():
         print("2.- Read")
         print("3.- Update")
         print("4.- Delete")
-        print("5.- Exit")
+        print("5.- Sair")
         print("----------------------------------------------------------")
 
         print("Digite sua opção: ")
@@ -172,14 +172,155 @@ def menuPrincipal():
             print("Obrigado por me usar!")
             break
         elif opcao == 1:
-            pass
+            telaCreate()
         elif opcao == 2:
-            pass
+            telaRead()
         elif opcao == 3:
             pass
         elif opcao == 4:
             pass
         input("Pressione enter para voltar!")
+
+
+def telaCreate():
+    while True:
+        print('-------------------------Tabelas-------------------------')
+        print('1.- Arbitro')
+        print('2.- Estadio')
+        print('3.- Lesao')
+        print('4.- Competicao')
+        print('5.- Tecnico')
+        print('6.- Clube')
+        print('7.- Jogador')
+        print('8.- LesaoJogador')
+        print('9.- Jogo')
+        print('10.- CartaoJogador')
+        print('11.- CartaoTecnico')
+        print('12.- Titulo')
+        print('13.- Sair')
+        print('----------------------------------------------------------')
+
+        print("Selecione uma tabela: ")
+        opcao = int(input())
+        if opcao == 13:
+            break
+        if opcao == 1:
+            print('Digite o nome do arbitro: ')
+            nome = input()
+            print('Digite a data de nascimento do arbitro (YYYY-MM-DD)')
+            datanasc = input()
+            print('Digite o numero de jogos apitados pelo arbitro')
+            qtdJogos = int(input())
+            print('Digite a data de estreia do arbitro (YYYY-MM-DD')
+            dataEstreia = input()
+            comando = f"insert into arbitro(nome, dataNasc, qtdJogos, dataEstreia) values('{nome}', '{datanasc}', {str(qtdJogos)}, '{dataEstreia}')"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 2:
+            print('Digite o nome do estádio: ')
+            nome = input()
+            print('Digite a data de inaugaração do estádio (YYYY-MM-DD): ')
+            dataInaug = input()
+            print('Digite o valor do estádio: ')
+            valor = float(input())
+            print('Digite a capacidade do estádio: ')
+            capac = int(input())
+            comando = f"insert into estadio(nome, dataInaug, valor, capacidade) values('{nome}', '{dataInaug}', {str(valor)}, '{str(capac)}')"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 3:
+            print("Digite a descrição da lesão")
+            desc = input()
+            comando = f"insert into lesao(descricao) values('{desc}')"
+            cursor.execute(comando)
+            connection.commit()
+        input("Digite enter para voltar")
+
+
+def telaRead():
+    while True:
+        print('-------------------------Tabelas-------------------------')
+        print('1.- Arbitro')
+        print('2.- Estadio')
+        print('3.- Lesao')
+        print('4.- Competicao')
+        print('5.- Tecnico')
+        print('6.- Clube')
+        print('7.- Jogador')
+        print('8.- LesaoJogador')
+        print('9.- Jogo')
+        print('10.- CartaoJogador')
+        print('11.- CartaoTecnico')
+        print('12.- Titulo')
+        print('13.- Sair')
+        print('----------------------------------------------------------')
+
+        print("Selecione uma tabela: ")
+        opcao = int(input())
+
+        if opcao == 1:
+            comando = "select * from arbitro"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 2:
+            comando = "select * from estadio"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 3:
+            comando = "select * from lesao"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 4:
+            comando = "select * from competicao"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 5:
+            comando = "select * from tecnico"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 6:
+            comando = "select * from clube"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 7:
+            comando = "select * from jogador"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 8:
+            comando = "select * from lesaoJogador"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 9:
+            comando = "select * from jogo"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 10:
+            comando = "select * from cartaoJogador"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 11:
+            comando = "select * from cartaoTecnico"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 12:
+            comando = "select * from titulo"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(result)
+        if opcao == 13:
+            break
+        input("Digite enter para voltar")
 
 
 if __name__ == '__main__':
