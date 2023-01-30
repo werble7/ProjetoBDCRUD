@@ -262,37 +262,103 @@ def telaRead():
             comando = "select * from arbitro"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 5 + "+")
+            print("| idArbitro" + " "*10 + "| nome" + " "*15 + "| data de nascimento " + "| qtd de jogos" + " "*7 + "| data de Estreia    |")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " "*(19-len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
         if opcao == 2:
             comando = "select * from estadio"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 5 + "+")
+            print("| idEstadio" + " " * 10 + "| nome" + " " * 15 + "| data de inauguração" + "| valor" + " " * 14 + "| capacidade" + ' '*9 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
         if opcao == 3:
             comando = "select * from lesao"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 2 + "+")
+            print(
+                "| idLesao" + " " * 12 + "| descricao" + " " * 10 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 2 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))) + "|")
+            print(("+" + "-" * 20) * 2 + "+")
         if opcao == 4:
             comando = "select * from competicao"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 2 + "+")
+            print(
+                "| idComp" + " " * 13 + "| descricao" + " " * 10 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 2 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))) + "|")
+            print(("+" + "-" * 20) * 2 + "+")
         if opcao == 5:
             comando = "select * from tecnico"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 5 + "+")
+            print(
+                "| idTecnico" + " " * 10 + "| nome" + " " * 15 + "| data de nascimento " + "| qtd de jogos" + " " * 7 + "| data de estreia" + ' ' * 4 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
         if opcao == 6:
             comando = "select * from clube"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 5 + "+")
+            print(
+                "| idClube" + " " * 12 + "| nome" + " " * 15 + "| data de fundacao   " + "| idEstadio" + " " * 10 + "| idTecnico" + ' ' * 10 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
         if opcao == 7:
             comando = "select * from jogador"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 8 + "+")
+            print("| idJogador" + " "*10 + "| nome" + " "*15 + "| data de nascimento " + "| posicao" + " "*12, end="")
+            print("| qtd de jogos" + ' '*7 + "| qtd de gols" + " "*8 + "| qtd de assists" + " "*5 + "| idClube" + " "*12 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 8 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))), end="")
+                print("| " + str(linha[5]) + " " * (19 - len(str(linha[5]))), end="")
+                print("| " + str(linha[6]) + " " * (19 - len(str(linha[6]))), end="")
+                print("| " + str(linha[7]) + " " * (19 - len(str(linha[7]))) + "|")
+
+            print(("+" + "-" * 20) * 8 + "+")
         if opcao == 8:
             comando = "select * from lesaoJogador"
             cursor.execute(comando)
