@@ -178,7 +178,7 @@ def menuPrincipal():
         elif opcao == 3:
             pass
         elif opcao == 4:
-            pass
+            telaDelete()
         input("Pressione enter para voltar!")
 
 
@@ -318,6 +318,106 @@ def telaRead():
             cursor.execute(comando)
             result = cursor.fetchall()
             print(result)
+        if opcao == 13:
+            break
+        input("Digite enter para voltar")
+
+
+def telaDelete():
+    while True:
+        print('-------------------------Tabelas-------------------------')
+        print('1.- Arbitro')
+        print('2.- Estadio')
+        print('3.- Lesao')
+        print('4.- Competicao')
+        print('5.- Tecnico')
+        print('6.- Clube')
+        print('7.- Jogador')
+        print('8.- LesaoJogador')
+        print('9.- Jogo')
+        print('10.- CartaoJogador')
+        print('11.- CartaoTecnico')
+        print('12.- Titulo')
+        print('13.- Sair')
+        print('----------------------------------------------------------')
+
+        print("Selecione uma tabela: ")
+        opcao = int(input())
+
+        if opcao == 1:
+            print("Digite o id do arbitro: ")
+            id = int(input())
+            comando = f"delete from arbitro where idArbitro = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 2:
+            print("Digite o id do estadio: ")
+            id = int(input())
+            comando = f"delete from estadio where idEstadio = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 3:
+            print("Digite o id do lesao: ")
+            id = int(input())
+            comando = f"delete from lesao where idLesao = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 4:
+            print("Digite o id do competicao: ")
+            id = int(input())
+            comando = f"delete from competicao where idComp = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 5:
+            print("Digite o id do tecnico: ")
+            id = int(input())
+            comando = f"delete from tecnico where idTecnico = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 6:
+            print("Digite o id do clube: ")
+            id = int(input())
+            comando = f"delete from clube where idClube = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 7:
+            print("Digite o id do jogador: ")
+            id = int(input())
+            comando = f"delete from jogador where idJogador = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 8:
+            print("Digite o id do jogador: ")
+            idj = int(input())
+            print("Digite a id da lesao: ")
+            idl = int(input())
+            comando = f"delete from lesaojogador where idJogador = {str(idj)} and idLesao = {str(idl)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 9:
+            print("Digite o id do jogo: ")
+            id = int(input())
+            comando = f"delete from jogo where idJogo = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 10:
+            print("Digite o id do cartaojogador: ")
+            id = int(input())
+            comando = f"delete from cartaojogador where idCartao = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 11:
+            print("Digite o id do cartaotecnico: ")
+            id = int(input())
+            comando = f"delete from cartaotecnico where idCartao = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
+        if opcao == 12:
+            print("Digite o id do titulo: ")
+            id = int(input())
+            comando = f"delete from titulo where idTitulo = {str(id)}"
+            cursor.execute(comando)
+            connection.commit()
         if opcao == 13:
             break
         input("Digite enter para voltar")
