@@ -3,6 +3,10 @@ import mysql.connector
 
 def createTables():
 
+    use = "use projetobdcrud;"
+    cursor.execute(use)
+    connection.commit()
+
     arbitro = """create table if not exists arbitro (
 	idArbitro int unsigned auto_increment,
 	nome varchar(80) not null,
@@ -357,33 +361,84 @@ def telaRead():
                 print("| " + str(linha[5]) + " " * (19 - len(str(linha[5]))), end="")
                 print("| " + str(linha[6]) + " " * (19 - len(str(linha[6]))), end="")
                 print("| " + str(linha[7]) + " " * (19 - len(str(linha[7]))) + "|")
-
             print(("+" + "-" * 20) * 8 + "+")
         if opcao == 8:
             comando = "select * from lesaoJogador"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 6 + "+")
+            print(
+                "| idLesao" + " "*12 + "| idJogador" + " "*10 + "| data de lesao"+" "*6 + "| gravidade"+" "*10 + "| região" +" "*13 + "| data de recuperação" + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 6 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))), end="")
+                print("| " + str(linha[5]) + " " * (19 - len(str(linha[5]))) + "|")
+            print(("+" + "-" * 20) * 6 + "+")
         if opcao == 9:
             comando = "select * from jogo"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 6 + "+")
+            print(
+                "| idJogo" + " " * 13 + "| idClube1" + " " * 11 + "| idClube2" + " " * 11 + "| idArbitro" + " "*10 + "| resultado" + " " * 10 + "| idComp" + " "*13 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 6 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))), end="")
+                print("| " + str(linha[5]) + " " * (19 - len(str(linha[5]))) + "|")
+            print(("+" + "-" * 20) * 6 + "+")
         if opcao == 10:
             comando = "select * from cartaoJogador"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 5 + "+")
+            print(
+                "| idCartao" + " " * 11 + "| idJogador" + " " * 10 + "| idJogo" + " "*13 + "| idArbitro" + " " * 10 + "| cor" + ' ' * 16 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
         if opcao == 11:
             comando = "select * from cartaoTecnico"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 5 + "+")
+            print(
+                "| idCartao" + " " * 11 + "| idTecnico" + " " * 10 + "| idJogo" + " " * 13 + "| idArbitro" + " " * 10 + "| cor" + ' ' * 16 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
         if opcao == 12:
             comando = "select * from titulo"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(result)
+            print(("+" + "-" * 20) * 5 + "+")
+            print(
+                "| idTitulo" + " " * 11 + "| idComp" + " " * 13 + "| idClube" + " " * 12 + "| ano" + " " * 16 + "| idArtilheiro" + ' ' * 7 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
         if opcao == 13:
             break
         input("Digite enter para voltar")
@@ -446,6 +501,24 @@ def telaUpdate():
             comando = f"update lesao set descricao = '{desc}' where idLesao = {id}"
             cursor.execute(comando)
             connection.commit()
+        if opcao == 4:
+            pass
+        if opcao == 5:
+            pass
+        if opcao == 6:
+            pass
+        if opcao == 7:
+            pass
+        if opcao == 8:
+            pass
+        if opcao == 9:
+            pass
+        if opcao == 10:
+            pass
+        if opcao == 11:
+            pass
+        if opcao == 12:
+            pass
         if opcao == 13:
             break
         input("Digite enter para voltar")
