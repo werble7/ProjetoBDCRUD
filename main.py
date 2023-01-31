@@ -3,6 +3,12 @@ import mysql.connector
 
 def createTables():
 
+    # criando tabelas
+
+    use = "use projetobdcrud;"
+    cursor.execute(use)
+    connection.commit()
+
     arbitro = """create table if not exists arbitro (
 	idArbitro int unsigned auto_increment,
 	nome varchar(80) not null,
@@ -152,6 +158,279 @@ def createTables():
     cursor.execute(titulo)
     connection.commit()
 
+    # criando inserts para arbitro
+    arbitrocount = "select count(*) from arbitro"
+    cursor.execute(arbitrocount)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+
+        arbitro1 = "insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Carlos','1976-12-18',15,'1996-02-18');"
+        arbitro2 = "insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Romário','1982-05-19',123,'2002-07-08');"
+        arbitro3 = "insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Cássio','1977-03-03', 38,'2003-04-09');"
+        arbitro4 = "insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Valdemar','1990-08-30',4,'2010-05-17');"
+        arbitro5 = "insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Roberto','1978-01-10',13,'1998-11-18');"
+
+        cursor.execute(arbitro1)
+        cursor.execute(arbitro2)
+        cursor.execute(arbitro3)
+        cursor.execute(arbitro4)
+        cursor.execute(arbitro5)
+        connection.commit()
+
+    # criando inserts para estadio
+    estadiocount = "select count(*) from estadio"
+    cursor.execute(estadiocount)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        estadio1 = "insert into estadio(nome,dataInaug,valor,capacidade) values('Pacaembu','1976-12-18',150000000,50000);"
+        estadio2 = "insert into estadio(nome,dataInaug,valor,capacidade) values('Allianz Parque','2012-12-18',1000000000,45000);"
+        estadio3 = "insert into estadio(nome,dataInaug,valor,capacidade) values('Morumbi','1970-10-28',100000000,100000);"
+        estadio4 = "insert into estadio(nome,dataInaug,valor,capacidade) values('Maracanã','1940-01-01',1000000,150000);"
+        estadio5 = "insert into estadio(nome,dataInaug,valor,capacidade) values('Mané Garrincha','1960-04-21',4000000000,70000);"
+
+        cursor.execute(estadio1)
+        connection.commit()
+        cursor.execute(estadio2)
+        connection.commit()
+        cursor.execute(estadio3)
+        connection.commit()
+        cursor.execute(estadio4)
+        connection.commit()
+        cursor.execute(estadio5)
+        connection.commit()
+
+    # criando inserts para lesao
+    lesaocount = "select count(*) from lesao"
+    cursor.execute(lesaocount)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        lesao1 = "insert into lesao(descricao) values('Fratura do joelho esquerdo');"
+        lesao2 = "insert into lesao(descricao) values('Torção do tornozelo direito');"
+        lesao3 = "insert into lesao(descricao) values('Fratura exposta da tíbia esquerda');"
+        lesao4 = "insert into lesao(descricao) values('Desolcamento do ombro direito');"
+        lesao5 = "insert into lesao(descricao) values('Deslocamento do ombro esquerdo');"
+
+        cursor.execute(lesao1)
+        connection.commit()
+        cursor.execute(lesao2)
+        connection.commit()
+        cursor.execute(lesao3)
+        connection.commit()
+        cursor.execute(lesao4)
+        connection.commit()
+        cursor.execute(lesao5)
+        connection.commit()
+
+    # criando inserts para competição
+    compcount = "select count(*) from competicao"
+    cursor.execute(compcount)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        comp1 = "insert into competicao(descricao) values('Brasileirão');"
+        comp2 = "insert into competicao(descricao) values('Copa do Brasil');"
+        comp3 = "insert into competicao(descricao) values('Libertadores');"
+        comp4 = "insert into competicao(descricao) values('Supercopa do Brasil');"
+        comp5 = "insert into competicao(descricao) values('Recopa Sulamericana');"
+
+        cursor.execute(comp1)
+        connection.commit()
+        cursor.execute(comp2)
+        connection.commit()
+        cursor.execute(comp3)
+        connection.commit()
+        cursor.execute(comp4)
+        connection.commit()
+        cursor.execute(comp5)
+        connection.commit()
+
+    # criando inserts para tecnico
+    teccount = "select count(*) from tecnico"
+    cursor.execute(teccount)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        tec1 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Luxemburgo','1960-05-19',915,'1983-12-04');"
+        tec2 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Felipão','1958-12-17',1056,'1985-06-05');"
+        tec3 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Muricy','1967-05-09',765,'1990-01-31');"
+        tec4 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Parreira','1948-09-29',451,'1970-08-14');"
+        tec5 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Ancelotti','1956-12-17',589,'1984-03-05');"
+
+        cursor.execute(tec1)
+        connection.commit()
+        cursor.execute(tec2)
+        connection.commit()
+        cursor.execute(tec3)
+        connection.commit()
+        cursor.execute(tec4)
+        connection.commit()
+        cursor.execute(tec5)
+        connection.commit()
+
+    # criando inserts para clube
+    count = "select count(*) from clube"
+    cursor.execute(count)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        com1 = "insert into clube(nome,dataFund,idEstadio,idTecnico) values('Palmeiras','1914-08-26',1,1);"
+        com2 = "insert into clube(nome,dataFund,idEstadio,idTecnico) values('Flamengo','1889-12-17',2,2);"
+        com3 = "insert into clube(nome,dataFund,idEstadio,idTecnico) values('São Paulo','1932-05-09',3,3);"
+        com4 = "insert into clube(nome,dataFund,idEstadio,idTecnico) values('Grêmio','1910-09-29',4,4);"
+        com5 = "insert into clube(nome,dataFund,idEstadio,idTecnico) values('Vasco','1894-12-17',5,5);"
+
+        cursor.execute(com1)
+        connection.commit()
+        cursor.execute(com2)
+        connection.commit()
+        cursor.execute(com3)
+        connection.commit()
+        cursor.execute(com4)
+        connection.commit()
+        cursor.execute(com5)
+        connection.commit()
+
+    # criando inserts para jogador
+    count = "select count(*) from jogador"
+    cursor.execute(count)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        com1 = "insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values();"
+        com2 = "insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values();"
+        com3 = "insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values();"
+        com4 = "insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values();"
+        com5 = "insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values();"
+
+        cursor.execute(com1)
+        connection.commit()
+        cursor.execute(com2)
+        connection.commit()
+        cursor.execute(com3)
+        connection.commit()
+        cursor.execute(com4)
+        connection.commit()
+        cursor.execute(com5)
+        connection.commit()
+
+    # criando inserts para lesaoJogador
+    count = "select count(*) from lesaojogador"
+    cursor.execute(count)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        com1 = "insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu) values();"
+        com2 = "insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu) values();"
+        com3 = "insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu) values();"
+        com4 = "insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu) values();"
+        com5 = "insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu) values();"
+
+        cursor.execute(com1)
+        connection.commit()
+        cursor.execute(com2)
+        connection.commit()
+        cursor.execute(com3)
+        connection.commit()
+        cursor.execute(com4)
+        connection.commit()
+        cursor.execute(com5)
+        connection.commit()
+
+    # criando inserts para jogo
+    count = "select count(*) from jogo"
+    cursor.execute(count)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        com1 = "insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values();"
+        com2 = "insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values();"
+        com3 = "insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values();"
+        com4 = "insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values();"
+        com5 = "insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values();"
+
+        cursor.execute(com1)
+        connection.commit()
+        cursor.execute(com2)
+        connection.commit()
+        cursor.execute(com3)
+        connection.commit()
+        cursor.execute(com4)
+        connection.commit()
+        cursor.execute(com5)
+        connection.commit()
+
+    # criando inserts para cartaojogador
+    count = "select count(*) from cartaojogador"
+    cursor.execute(count)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        com1 = "insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values();"
+        com2 = "insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values();"
+        com3 = "insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values();"
+        com4 = "insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values();"
+        com5 = "insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values();"
+
+        cursor.execute(com1)
+        connection.commit()
+        cursor.execute(com2)
+        connection.commit()
+        cursor.execute(com3)
+        connection.commit()
+        cursor.execute(com4)
+        connection.commit()
+        cursor.execute(com5)
+        connection.commit()
+
+    # criando inserts para cartaotecnico
+    count = "select count(*) from cartaotecnico"
+    cursor.execute(count)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        com1 = "insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values();"
+        com2 = "insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values();"
+        com3 = "insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values();"
+        com4 = "insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values();"
+        com5 = "insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values();"
+
+        cursor.execute(com1)
+        connection.commit()
+        cursor.execute(com2)
+        connection.commit()
+        cursor.execute(com3)
+        connection.commit()
+        cursor.execute(com4)
+        connection.commit()
+        cursor.execute(com5)
+        connection.commit()
+
+    # criando inserts para titulo
+    count = "select count(*) from titulo"
+    cursor.execute(count)
+    result = cursor.fetchall()
+
+    if result[0][0] == 0:
+        com1 = "insert into titulo(idComp,idClube,ano,idArtilheiro) values();"
+        com2 = "insert into titulo(idComp,idClube,ano,idArtilheiro) values();"
+        com3 = "insert into titulo(idComp,idClube,ano,idArtilheiro) values();"
+        com4 = "insert into titulo(idComp,idClube,ano,idArtilheiro) values();"
+        com5 = "insert into titulo(idComp,idClube,ano,idArtilheiro) values();"
+
+        cursor.execute(com1)
+        connection.commit()
+        cursor.execute(com2)
+        connection.commit()
+        cursor.execute(com3)
+        connection.commit()
+        cursor.execute(com4)
+        connection.commit()
+        cursor.execute(com5)
+        connection.commit()
+
 
 def menuPrincipal():
 
@@ -237,116 +516,58 @@ def telaCreate():
         elif opcao == 4:
             print("Digite a descrição da competicao")
             desc = input()
-            comando = f"insert into competicao(descricao) values('{desc}')"
+            comando = f"insert into Competicao(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 5:
             print("Digite informações do técnico")
-            print("digite o nome do técnico: ")
             nome = input()
-            print('Digite a data de nascimento (YYYY-MM-DD): ')
             dataNasc = input()
-            print('Digite a quantidade de jogos: ')
             qtdJogos = input()
-            print('Digite a data de nascimento (YYYY-MM-DD): ')
             dataEstreia = input()
-            comando = f"insert into tecnico(nome, dataNasc, qtdJogos, dataEstreia) values('{nome}', '{dataNasc}', {str(qtdJogos)}, '{dataEstreia}')"
+            comando = f"insert into Tecnico(nome, dataNasc, qtdJogos, dataEstreia) values('{nome}', '{dataNasc}', {qtdJogos}, '{dataEstreia}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 6:
             print("Digite a informação do clube")
-            print('Digite o nome do Clube: ')
-            nome = input()
-            print("data de fundação doi clube: ")
-            dataFund = input()
-            print('digite o id do estadio: ')
-            idEstadio = input()
-            print("digite idTecnico")
-            idTecnico = input()
-            comando = f"insert into clube(nome, dataFund, idEstadio, idTecnico) values('{nome}', '{dataFund}','{str(idEstadio)}', '{str(idTecnico)}')"
+            desc = input()
+            comando = f"insert into Clube(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 7:
             print("Digite informações do jogador")
-            print("Digite o nome do jogador: ")
-            nome = input()
-            print("Digite a data de nascimento do jogador (YYYY-MM-DD): ")
-            dataNasc = input()
-            print('a posicao: ')
-            posicao = input()
-            print('a quantidade de jogos: ')
-            qtdJogos = input()
-            print('a quantidade de gols: ')
-            qtdGols = input()
-            print("a quantidae de assistencias: ")
-            qtdAssist = input()
-            print("id do clube: ")
-            idClube = input()
-            comando = f"insert into jogador(nome, dataNasc, posicao, qtdJogos, qtdGols, qtdAssist, idClube) values('{nome}','{dataNasc}','{posicao}', '{str(qtdJogos)}', '{str(qtdGols)}', '{str(qtdAssist)}', '{str(idClube)}')"
+            desc = input()
+            comando = f"insert into Jogador(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 8:
-            print("Digite o id da lesão do jogador: ")
-            idLesao = input()
-            print('Digite o id do jogador: ')
-            idJogador = input()
-            print('data da lesao: ')
-            dataLesao = input()
-            print("dados da gravidade: ")
-            gravidade = input()
-            print("regiao da lesao: ")
-            regiao = input()
-            print("digite a data de recuperacao")
-            dataRecu = input()
-            comando = f"insert into LesaoJogador(idLesao, idJogador, dataLesao, gravidade, regiao, dataRecu) values('{str(idLesao)}', '{str(idJogador)}', '{dataLesao}', '{gravidade}', '{regiao}', '{dataRecu}')"
+            print("Digite a lesão do jogador")
+            desc = input()
+            comando = f"insert into LesaoJogador(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 9:
-            print("Digite o id do clube em casa: ")
-            idClube1 = input()
-            print("Digite o id do clube fora: ")
-            idClube2 = input()
-            print('digite o idArbitro: ')
-            idArbitro = input()
-            print('resultado da partida: ')
-            resultado = input()
-            print('Digite o id da competicao')
-            idComp = input()
-            comando = f"insert into jogo(idClube1, idClube2, idArbitro, resultado, idComp) values('{str(idClube1)}','{str(idClube2)}, '{str(idArbitro)}', '{resultado}', '{str(idComp)}')"
+            print("Digite informações do jogo")
+            desc = input()
+            comando = f"insert into Jogo(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 10:
-            print("Digite o id do jogador")
-            idJogador = input()
-            print("id do jogo: ")
-            idJogo = input()
-            print("id do Arbitro")
-            idArbitro = input()
-            print("cor do cartao")
-            cor = input()
-            comando = f"insert into CartaoJogador(idJogador, idJogo, idArbitro, cor) values('{str(idJogador)}','{str(idJogo)}', '{str(idArbitro)}', '{cor}')"
+            print("Digite o CartaoJogador")
+            desc = input()
+            comando = f"insert into CartaoJogador(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 11:
-            print("Digite o id do tecnico: ")
-            idTecnico = input()
-            print("digite o id do jogo: ")
-            idJogo = input()
-            print("digite o id do arbitro: ")
-            idArbitro = input()
-            print("digite a cor do cartao: ")
-            cor = input()
-            comando = f"insert into CartaoTecnico(idTecnico, idJogo, idArbitro, cor) values('{str(idTecnico)}', '{str(idJogo)}', '{str(idArbitro)}', '{cor}')"
+            print("Digite informacoes do cartao tecnico")
+            desc = input()
+            comando = f"insert into CartaoTecnico(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
         elif opcao == 12:
-            print("Digite o id da competicao")
-            idComp = input()
-            print("digite o id do clube")
-            idClube = input()
-            print("digite o id do artilheiro")
-            idArtilheiro = input()
-            comando = f"insert into titulo(idComp, idClube, idArtilheiro) values('{str(idComp)}', '{str(idClube)}', '{str(idArtilheiro)}')"
+            print("Digite ingformacoes do Titulo")
+            desc = input()
+            comando = f"insert into Titulo(descricao) values('{desc}')"
             cursor.execute(comando)
             connection.commit()
 
@@ -378,29 +599,9 @@ def telaRead():
             comando = "select * from arbitro"
             cursor.execute(comando)
             result = cursor.fetchall()
-
-
-<< << << < HEAD
-            print(("+" + "-" * 20) * 5 + "+")
-            print("| idArbitro" + " "*10 + "| nome" + " "*15 + "| data de nascimento " +
-                  "| qtd de jogos" + " "*7 + "| data de Estreia    |")
-            for linha in result:
-                print(("+" + "-" * 40) * 5 + "+")
-                print("| " + str(linha[0]) + " " *
-                      (39-len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " *
-                      (39 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " *
-                      (39 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " *
-                      (39 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " *
-                      (19 - len(str(linha[4]))) + "|")
-            print(("+" + "-" * 20) * 5 + "+")
-== == == =
             print(("+" + "-" * 40) * 5 + "+")
-            print("| idArbitro" + " "*30 + "| nome" + " "*35 + "| data de nascimento" +
-                  " "*21 + "| qtd de jogos" + " "*27 + "| data de Estreia" + " "*24 + "|")
+            print("| idArbitro" + " "*30 + "| nome" + " "*35 + "| data de nascimento" + " "*21 +
+                  "| qtd de jogos" + " "*27 + "| data de Estreia" + " "*24 + "|")
             for linha in result:
                 print(("+" + "-" * 40) * 5 + "+")
                 print("| " + str(linha[0]) + " " *
@@ -414,32 +615,14 @@ def telaRead():
                 print("| " + str(linha[4]) + " " *
                       (39 - len(str(linha[4]))) + "|")
             print(("+" + "-" * 40) * 5 + "+")
->>>>>> > e1b72e15d8aca537f0ceed772cbb3210b59fe741
+
         if opcao == 2:
             comando = "select * from estadio"
             cursor.execute(comando)
             result = cursor.fetchall()
-<< << << < HEAD
-            print(("+" + "-" * 20) * 5 + "+")
-            print("| idEstadio" + " " * 10 + "| nome" + " " * 15 +
-                  "| data de inauguração" + "| valor" + " " * 14 + "| capacidade" + ' '*9 + "|")
-            for linha in result:
-                print(("+" + "-" * 40) * 5 + "+")
-                print("| " + str(linha[0]) + " " *
-                      (39 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " *
-                      (39 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " *
-                      (39 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " *
-                      (39 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " *
-                      (19 - len(str(linha[4]))) + "|")
-            print(("+" + "-" * 20) * 5 + "+")
-== == == =
             print(("+" + "-" * 40) * 5 + "+")
-            print("| idEstadio" + " " * 30 + "| nome" + " " * 35 + "| data de inauguração" +
-                  " "*20 + "| valor" + " " * 34 + "| capacidade" + ' '*29 + "|")
+            print("| idEstadio" + " " * 30 + "| nome" + " " * 35 +
+                  "| data de inauguração" + " "*20 + "| valor" + " " * 34 + "| capacidade" + ' '*29 + "|")
             for linha in result:
                 print(("+" + "-" * 40) * 5 + "+")
                 print("| " + str(linha[0]) + " " *
@@ -453,88 +636,46 @@ def telaRead():
                 print("| " + str(linha[4]) + " " *
                       (39 - len(str(linha[4]))) + "|")
             print(("+" + "-" * 40) * 5 + "+")
->>>>>> > e1b72e15d8aca537f0ceed772cbb3210b59fe741
+
         if opcao == 3:
             comando = "select * from lesao"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 2 + "+")
+            print(("+" + "-" * 40) * 2 + "+")
             print(
-                "| idLesao" + " " * 12 + "| descricao" + " " * 10 + "|")
+                "| idLesao" + " " * 32 + "| descricao" + " " * 40 + "|")
             for linha in result:
-<< << << < HEAD
-                print(("+" + "-" * 20) * 2 + "+")
+                print(("+" + "-" * 40) * 2 + "+")
                 print("| " + str(linha[0]) + " " *
                       (39 - len(str(linha[0]))), end="")
                 print("| " + str(linha[1]) + " " *
-                      (19 - len(str(linha[1]))) + "|")
-            print(("+" + "-" * 20) * 2 + "+")
-=======
-                print(("+" + "-" * 40) * 2 + "+")
-                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))) + "|")
+                      (39 - len(str(linha[1]))) + "|")
             print(("+" + "-" * 40) * 2 + "+")
->>>>>>> e1b72e15d8aca537f0ceed772cbb3210b59fe741
+
         if opcao == 4:
             comando = "select * from competicao"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 2 + "+")
+            print(("+" + "-" * 40) * 2 + "+")
             print(
-                "| idComp" + " " * 13 + "| descricao" + " " * 10 + "|")
+                "| idComp" + " " * 33 + "| descricao" + " " * 30 + "|")
             for linha in result:
-<<<<<<< HEAD
-                print(("+" + "-" * 20) * 2 + "+")
+                print(("+" + "-" * 40) * 2 + "+")
                 print("| " + str(linha[0]) + " " *
                       (39 - len(str(linha[0]))), end="")
                 print("| " + str(linha[1]) + " " *
-                      (19 - len(str(linha[1]))) + "|")
-            print(("+" + "-" * 20) * 2 + "+")
-=======
-                print(("+" + "-" * 40) * 2 + "+")
-                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))) + "|")
+                      (39 - len(str(linha[1]))) + "|")
             print(("+" + "-" * 40) * 2 + "+")
->>>>>>> e1b72e15d8aca537f0ceed772cbb3210b59fe741
+
         if opcao == 5:
             comando = "select * from tecnico"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 5 + "+")
-            print(
-                "| idTecnico" + " " * 10 + "| nome" + " " * 15 + "| data de nascimento " + "| qtd de jogos" + " " * 7 + "| data de estreia" + ' ' * 4 + "|")
-            for linha in result:
-<<<<<<< HEAD
-                print(("+" + "-" * 20) * 5 + "+")
-                print("| " + str(linha[0]) + " " *
-                      (19 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " *
-                      (19 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " *
-                      (19 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " *
-                      (19 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " *
-                      (19 - len(str(linha[4]))) + "|")
-            print(("+" + "-" * 20) * 5 + "+")
-=======
-                print(("+" + "-" * 40) * 5 + "+")
-                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " * (39 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " * (39 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " * (39 - len(str(linha[4]))) + "|")
             print(("+" + "-" * 40) * 5 + "+")
->>>>>>> e1b72e15d8aca537f0ceed772cbb3210b59fe741
-        if opcao == 6:
-            comando = "select * from clube"
-            cursor.execute(comando)
-            result = cursor.fetchall()
-            print(("+" + "-" * 20) * 5 + "+")
             print(
-                "| idClube" + " " * 12 + "| nome" + " " * 15 + "| data de fundacao   " + "| idEstadio" + " " * 10 + "| idTecnico" + ' ' * 10 + "|")
+                "| idTecnico" + " " * 30 + "| nome" + " " * 35 + "| data de nascimento" + " "*21 + "| qtd de jogos" + " " * 27 + "| data de estreia" + ' ' * 24 + "|")
             for linha in result:
-                print(("+" + "-" * 20) * 5 + "+")
+                print(("+" + "-" * 40) * 5 + "+")
                 print("| " + str(linha[0]) + " " *
                       (39 - len(str(linha[0]))), end="")
                 print("| " + str(linha[1]) + " " *
@@ -557,8 +698,7 @@ def telaRead():
             print("| qtd de jogos" + ' '*27 + "| qtd de gols" + " "*28 +
                   "| qtd de assists" + " "*25 + "| idClube" + " "*32 + "|")
             for linha in result:
-                print(("+" + "-" * 20) * 8 + "+")
-<<<<<<< HEAD
+                print(("+" + "-" * 40) * 8 + "+")
                 print("| " + str(linha[0]) + " " *
                       (39 - len(str(linha[0]))), end="")
                 print("| " + str(linha[1]) + " " *
@@ -577,94 +717,83 @@ def telaRead():
                       (39 - len(str(linha[7]))) + "|")
             print(("+" + "-" * 40) * 8 + "+")
 
-=======
-                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))), end="")
-                print("| " + str(linha[5]) + " " * (19 - len(str(linha[5]))), end="")
-                print("| " + str(linha[6]) + " " * (19 - len(str(linha[6]))), end="")
-                print("| " + str(linha[7]) + " " * (19 - len(str(linha[7]))) + "|")
->>>>>>> e1b72e15d8aca537f0ceed772cbb3210b59fe741
-            print(("+" + "-" * 20) * 8 + "+")
         if opcao == 8:
             comando = "select * from lesaoJogador"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 6 + "+")
+            print(("+" + "-" * 40) * 6 + "+")
             print(
-                "| idLesao" + " "*12 + "| idJogador" + " "*10 + "| data de lesao"+" "*6 + "| gravidade"+" "*10 + "| região" +" "*13 + "| data de recuperação" + "|")
+                "| idLesao" + " "*32 + "| idJogador" + " "*30 + "| data de lesao"+" "*26 + "| gravidade"+" "*30 + "| região" +" "*33 + "| data de recuperação" + " "*20 + "|")
             for linha in result:
-                print(("+" + "-" * 20) * 6 + "+")
-                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))), end="")
-                print("| " + str(linha[5]) + " " * (19 - len(str(linha[5]))) + "|")
-            print(("+" + "-" * 20) * 6 + "+")
+                print(("+" + "-" * 40) * 6 + "+")
+                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (39 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (39 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (39 - len(str(linha[4]))), end="")
+                print("| " + str(linha[5]) + " " * (39 - len(str(linha[5]))) + "|")
+            print(("+" + "-" * 40) * 6 + "+")
         if opcao == 9:
             comando = "select * from jogo"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 6 + "+")
+            print(("+" + "-" * 40) * 6 + "+")
             print(
-                "| idJogo" + " " * 13 + "| idClube1" + " " * 11 + "| idClube2" + " " * 11 + "| idArbitro" + " "*10 + "| resultado" + " " * 10 + "| idComp" + " "*13 + "|")
+                "| idJogo" + " " * 33 + "| idClube1" + " " * 31 + "| idClube2" + " " * 31 + "| idArbitro" + " "*30 + "| resultado" + " " * 30 + "| idComp" + " "*33 + "|")
             for linha in result:
-                print(("+" + "-" * 20) * 6 + "+")
-                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))), end="")
-                print("| " + str(linha[5]) + " " * (19 - len(str(linha[5]))) + "|")
-            print(("+" + "-" * 20) * 6 + "+")
+                print(("+" + "-" * 40) * 6 + "+")
+                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (39 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (39 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (39 - len(str(linha[4]))), end="")
+                print("| " + str(linha[5]) + " " * (39 - len(str(linha[5]))) + "|")
+            print(("+" + "-" * 40) * 6 + "+")
         if opcao == 10:
             comando = "select * from cartaoJogador"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 5 + "+")
+            print(("+" + "-" * 40) * 5 + "+")
             print(
-                "| idCartao" + " " * 11 + "| idJogador" + " " * 10 + "| idJogo" + " "*13 + "| idArbitro" + " " * 10 + "| cor" + ' ' * 16 + "|")
+                "| idCartao" + " " * 31 + "| idJogador" + " " * 30 + "| idJogo" + " "*33 + "| idArbitro" + " " * 30 + "| cor" + ' ' * 36 + "|")
             for linha in result:
-                print(("+" + "-" * 20) * 5 + "+")
-                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
-            print(("+" + "-" * 20) * 5 + "+")
+                print(("+" + "-" * 40) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (39 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (39 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (39 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 40) * 5 + "+")
         if opcao == 11:
             comando = "select * from cartaoTecnico"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 5 + "+")
+            print(("+" + "-" * 40) * 5 + "+")
             print(
-                "| idCartao" + " " * 11 + "| idTecnico" + " " * 10 + "| idJogo" + " " * 13 + "| idArbitro" + " " * 10 + "| cor" + ' ' * 16 + "|")
+                "| idCartao" + " " * 31 + "| idTecnico" + " " * 30 + "| idJogo" + " " * 33 + "| idArbitro" + " " * 30 + "| cor" + ' ' * 36 + "|")
             for linha in result:
-                print(("+" + "-" * 20) * 5 + "+")
-                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
-            print(("+" + "-" * 20) * 5 + "+")
+                print(("+" + "-" * 40) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (39 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (39 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (39 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 40) * 5 + "+")
         if opcao == 12:
             comando = "select * from titulo"
             cursor.execute(comando)
             result = cursor.fetchall()
-            print(("+" + "-" * 20) * 5 + "+")
+            print(("+" + "-" * 40) * 5 + "+")
             print(
-                "| idTitulo" + " " * 11 + "| idComp" + " " * 13 + "| idClube" + " " * 12 + "| ano" + " " * 16 + "| idArtilheiro" + ' ' * 7 + "|")
+                "| idTitulo" + " " * 31 + "| idComp" + " " * 33 + "| idClube" + " " * 32 + "| ano" + " " * 36 + "| idArtilheiro" + ' ' * 27 + "|")
             for linha in result:
-                print(("+" + "-" * 20) * 5 + "+")
-                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
-                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
-                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
-                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
-                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
-            print(("+" + "-" * 20) * 5 + "+")
+                print(("+" + "-" * 40) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (39 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (39 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (39 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (39 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (39 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 40) * 5 + "+")
         if opcao == 13:
             break
         input("Digite enter para voltar")
@@ -727,6 +856,24 @@ def telaUpdate():
             comando = f"update lesao set descricao = '{desc}' where idLesao = {id}"
             cursor.execute(comando)
             connection.commit()
+        if opcao == 4:
+            pass
+        if opcao == 5:
+            pass
+        if opcao == 6:
+            pass
+        if opcao == 7:
+            pass
+        if opcao == 8:
+            pass
+        if opcao == 9:
+            pass
+        if opcao == 10:
+            pass
+        if opcao == 11:
+            pass
+        if opcao == 12:
+            pass
         if opcao == 13:
             break
         input("Digite enter para voltar")
