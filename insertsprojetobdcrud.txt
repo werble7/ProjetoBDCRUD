@@ -1,0 +1,72 @@
+insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Carlos','1976-12-18',15,'1996-02-18');
+insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Romário','1982-05-19',123,'2002-07-08');
+insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Cássio','1977-03-03', 38,'2003-04-09');
+insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Valdemar','1990-08-30',4,'2010-05-17');
+insert into arbitro(nome,dataNasc,qtdJogos,dataEstreia) values('Roberto','1978-01-10',13,'1998-11-18');
+
+insert into estadio(nome,dataInaug,valor,capacidade) values('Pacaembu','1976-12-18',150000000,50000);"
+insert into estadio(nome,dataInaug,valor,capacidade) values('Allianz Parque','2012-12-18',1000000000,45000);"
+insert into estadio(nome,dataInaug,valor,capacidade) values('Morumbi','1970-10-28',100000000,100000);"
+insert into estadio(nome,dataInaug,valor,capacidade) values('Maracanã','1940-01-01',1000000,150000);"
+insert into estadio(nome,dataInaug,valor,capacidade) values('Mané Garrincha','1960-04-21',4000000000,70000);"
+
+insert into lesao(descricao) values('Fratura do joelho esquerdo');
+insert into lesao(descricao) values('Torção do tornozelo direito');
+insert into lesao(descricao) values('Fratura exposta da tíbia esquerda');
+insert into lesao(descricao) values('Desolcamento do ombro direito');
+insert into lesao(descricao) values('Deslocamento do ombro esquerdo');
+
+insert into competicao(descricao) values('Brasileirão');
+insert into competicao(descricao) values('Copa do Brasil');
+insert into competicao(descricao) values('Libertadores');
+insert into competicao(descricao) values('Supercopa do Brasil');
+insert into competicao(descricao) values('Recopa Sulamericana');
+
+insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Luxemburgo','1960-05-19',915,'1983-12-04');
+insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Felipão','1958-12-17',1056,'1985-06-05');
+insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Muricy','1967-05-09',765,'1990-01-31');
+insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Parreira','1948-09-29',451,'1970-08-14');
+insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Ancelotti','1956-12-17',589,'1984-03-05');
+
+insert into clube(nome,dataFund,idEstadio,idTecnico) values('Palmeiras','1914-08-26',1,1);
+insert into clube(nome,dataFund,idEstadio,idTecnico) values('Flamengo','1889-12-17',2,2);
+insert into clube(nome,dataFund,idEstadio,idTecnico) values('São Paulo','1932-05-09',3,3);
+insert into clube(nome,dataFund,idEstadio,idTecnico) values('Grêmio','1910-09-29',4,4);
+insert into clube(nome,dataFund,idEstadio,idTecnico) values('Vasco','1894-12-17',5,5);
+
+insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values('David Luiz', '1987-04-22','Zagueiro',30, 7, 5, 2);
+insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values('Joaquín Piquerez', '1998-08-24','lateral esq.',23, 15, 8, 1);
+insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values('Luis Suárez', '1987-01-24','Centroavante',5, 4, 3, 4);
+insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values('Rodrigo Nestor', '2000-09-08','Meia Central',36, 14, 9, 3);
+insert into jogador(nome,dataNasc,posicao,qtdJogos,qtdGols,qtdAssist,idClube) values('Endrick', '2006-07-21','Centroavante',7, 2, 1, 1);
+
+insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu,idLesao,idJogador) values('2022-09-15', 'leve', 'joelho', '2022-09-29',1,2);
+insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu,idLesao,idJogador) values('2022-08-15', 'leve', 'ombro', '2022-09-02',3,2);
+insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu,idLesao,idJogador) values('2022-09-15', 'médio', 'tornozelo', '2022-09-29',2,3);
+insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu,idLesao,idJogador) values('2022-09-15', 'leve', 'tbia', '2022-09-15',5,1);
+insert into lesaojogador(dataLesao,gravidade,regiao,dataRecu,idLesao,idJogador) values('2022-09-15', 'leve', 'ombro', '2022-09-29',2,1);
+
+insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values(1,2,3,'3x1',1);
+insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values(3,5,3,'4x1',3);
+insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values(4,1,1,'1x2',2);
+insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values(5,3,2,'2x4',4);
+insert into jogo(idClube1,idClube2,idArbitro,resultado,idComp) values(5,2,4,'3x4',2);
+
+insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values(1,3,1,'amarelo');
+insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values(3,2,3,'amarelo');
+insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values(4,2,3,'amarelo');
+insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values(4,4,2,'vermelho');
+insert into cartaojogador(idJogador,idJogo,idArbitro,cor) values(2,5,4,'amarelo');
+
+insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values(1,3,1,'amarelo');
+insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values(2,3,3,'amarelo');
+insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values(3,4,2,'vermelho');
+insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values(3,2,3,'vermelho');
+insert into cartaotecnico(idTecnico,idJogo,idArbitro,cor) values(3,4,2,'vermelho');
+
+insert into titulo(idComp,idClube,ano,idArtilheiro) values(1,2,2016,2);
+insert into titulo(idComp,idClube,ano,idArtilheiro) values(2,3,2007,4);
+insert into titulo(idComp,idClube,ano,idArtilheiro) values(5,1,2023,5);
+insert into titulo(idComp,idClube,ano,idArtilheiro) values(3,3,2017,2);
+insert into titulo(idComp,idClube,ano,idArtilheiro) values(2,2,2013,4);
+
