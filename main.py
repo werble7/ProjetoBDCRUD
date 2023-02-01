@@ -292,7 +292,7 @@ def createTables():
         connection.commit()
         cursor.execute(com5)
         connection.commit()
-
+'''
     # criando inserts para jogador
     count = "select count(*) from jogador"
     cursor.execute(count)
@@ -430,7 +430,7 @@ def createTables():
         connection.commit()
         cursor.execute(com5)
         connection.commit()
-
+'''
 
 def menuPrincipal():
 
@@ -654,7 +654,8 @@ def telaRead():
         print('10.- CartaoJogador')
         print('11.- CartaoTecnico')
         print('12.- Titulo')
-        print('13.- Sair')
+        print('13.- Views')
+        print('14.- Sair')
         print('----------------------------------------------------------')
 
         print("Selecione uma tabela: ")
@@ -860,6 +861,65 @@ def telaRead():
                 print("| " + str(linha[4]) + " " * (39 - len(str(linha[4]))) + "|")
             print(("+" + "-" * 40) * 5 + "+")
         if opcao == 13:
+            print("Visualizando a quantidade total de registros")
+            comando = "select count(*) from arbitro"
+            cursor.execute(comando)
+            result1 = cursor.fetchall()
+            comando = "select count(*) from estadio"
+            cursor.execute(comando)
+            result2 = cursor.fetchall()
+            comando = "select count(*) from lesao"
+            cursor.execute(comando)
+            result3 = cursor.fetchall()
+            comando = "select count(*) from competicao"
+            cursor.execute(comando)
+            result4 = cursor.fetchall()
+            comando = "select count(*) from tecnico"
+            cursor.execute(comando)
+            result5 = cursor.fetchall()
+            comando = "select count(*) from clube"
+            cursor.execute(comando)
+            result6 = cursor.fetchall()
+            comando = "select count(*) from jogador"
+            cursor.execute(comando)
+            result7 = cursor.fetchall()
+            comando = "select count(*) from lesaojogador"
+            cursor.execute(comando)
+            result8 = cursor.fetchall()
+            comando = "select count(*) from jogo"
+            cursor.execute(comando)
+            result9 = cursor.fetchall()
+            comando = "select count(*) from cartaojogador"
+            cursor.execute(comando)
+            result10 = cursor.fetchall()
+            comando = "select count(*) from cartaotecnico"
+            cursor.execute(comando)
+            result11 = cursor.fetchall()
+            comando = "select count(*) from titulo"
+            cursor.execute(comando)
+            result12 = cursor.fetchall()
+            print(("+" + "-" * 30) * 12 + "+")
+            print(
+                "| qtd de árbitros" + " " * 14 + "| qtd de estádios" + " " * 14 + "| qtd de lesões" + " " * 16 + "| qtd de competições" + " " * 11  + "| qtd de técnicos" + ' ' * 14, end="")
+            print(
+                "| qtd de clubes" + " " * 16 + "| qtd de jogadores" + " " * 13 + "| qtd de lesões de jogadores" + " "* 3 + "| qtd de jogos" + " " * 17 + "| qtd de cartões de jogadores" + "  ", end="")
+            print(
+                "| qtd de cartões de técnicos" + " " * 3 + "| qtd de títulos" + " " * 15 + "|")
+            print(("+" + "-" * 30) * 12 + "+")
+            print("| " + str(result1[0][0]) + " " * (29 - len(str(result1[0][0]))), end="")
+            print("| " + str(result2[0][0]) + " " * (29 - len(str(result2[0][0]))), end="")
+            print("| " + str(result3[0][0]) + " " * (29 - len(str(result3[0][0]))), end="")
+            print("| " + str(result4[0][0]) + " " * (29 - len(str(result4[0][0]))), end="")
+            print("| " + str(result5[0][0]) + " " * (29 - len(str(result5[0][0]))), end="")
+            print("| " + str(result6[0][0]) + " " * (29 - len(str(result6[0][0]))), end="")
+            print("| " + str(result7[0][0]) + " " * (29 - len(str(result7[0][0]))), end="")
+            print("| " + str(result8[0][0]) + " " * (29 - len(str(result8[0][0]))), end="")
+            print("| " + str(result9[0][0]) + " " * (29 - len(str(result9[0][0]))), end="")
+            print("| " + str(result10[0][0]) + " " * (29 - len(str(result10[0][0]))), end="")
+            print("| " + str(result11[0][0]) + " " * (29 - len(str(result11[0][0]))), end="")
+            print("| " + str(result12[0][0]) + " " * (29 - len(str(result12[0][0]))) + "|")
+            print(("+" + "-" * 30) * 12 + "+")
+        if opcao == 14:
             break
         input("Digite enter para voltar")
 
