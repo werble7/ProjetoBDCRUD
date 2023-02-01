@@ -101,7 +101,7 @@ def createTables():
     connection.commit()
 
     jogo = """create table if not exists jogo (
-	idJogo int unsigned not null,
+	idJogo int unsigned not null auto_increment,
 	idClube1 int unsigned not null,
 	idClube2 int unsigned not null,
 	idArbitro int unsigned not null,
@@ -253,11 +253,11 @@ def createTables():
     result = cursor.fetchall()
 
     if result[0][0] == 0:
-        tec1 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Luxemburgo','1960-05-19',915,'1983-12-04',40,'2021-12-04');"
-        tec2 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Felipão','1958-12-17',1056,'1985-06-05',35, '2021-06-05');"
-        tec3 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Muricy','1967-05-09',765,'1990-01-31',20, '2022-01-31');"
-        tec4 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Parreira','1948-09-29',451,'1970-08-14',17, '2021-08-14');"
-        tec5 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Ancelotti','1956-12-17',589,'1984-03-05',37,'2015-03-05');"
+        tec1 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Luxemburgo','1960-05-19',915,'1983-12-04');"
+        tec2 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Felipão','1958-12-17',1056,'1985-06-05');"
+        tec3 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Muricy','1967-05-09',765,'1990-01-31');"
+        tec4 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Parreira','1948-09-29',451,'1970-08-14');"
+        tec5 = "insert into tecnico(nome,dataNasc,qtdJogos,dataEstreia) values('Ancelotti','1956-12-17',589,'1984-03-05');"
 
         cursor.execute(tec1)
         connection.commit()
@@ -666,11 +666,7 @@ def telaRead():
             cursor.execute(comando)
             result = cursor.fetchall()
 
-            print(("+" + "-" * 20) * 5 + "+")
-            print("| idArbitro" + " "*10 + "| nome" + " "*15 + "| data de nascimento " +
-                  "| qtd de jogos" + " "*7 + "| data de Estreia    |")
-            for linha in result:
-                print(("+" + "-" * 40) * 5 + "+")
+            print(("+" + "-" * 40) * 5 + "+")
             print("| idArbitro" + " "*30 + "| nome" + " "*35 + "| data de nascimento" + " "*21 +
                   "| qtd de jogos" + " "*27 + "| data de Estreia" + " "*24 + "|")
             for linha in result:
@@ -692,11 +688,7 @@ def telaRead():
             cursor.execute(comando)
             result = cursor.fetchall()
 
-            print(("+" + "-" * 20) * 5 + "+")
-            print("| idEstadio" + " " * 10 + "| nome" + " " * 15 +
-                  "| data de inauguração" + "| valor" + " " * 14 + "| capacidade" + ' '*9 + "|")
-            for linha in result:
-                print(("+" + "-" * 40) * 5 + "+")
+            print(("+" + "-" * 40) * 5 + "+")
             print("| idEstadio" + " " * 30 + "| nome" + " " * 35 +
                   "| data de inauguração" + " "*20 + "| valor" + " " * 34 + "| capacidade" + ' '*29 + "|")
             for linha in result:
@@ -719,7 +711,7 @@ def telaRead():
             result = cursor.fetchall()
             print(("+" + "-" * 40) * 2 + "+")
             print(
-                "| idLesao" + " " * 32 + "| descricao" + " " * 40 + "|")
+                "| idLesao" + " " * 32 + "| descricao" + " " * 30 + "|")
             for linha in result:
                 print(("+" + "-" * 40) * 2 + "+")
                 print("| " + str(linha[0]) + " " *
@@ -764,13 +756,29 @@ def telaRead():
                       (39 - len(str(linha[4]))) + "|")
             print(("+" + "-" * 40) * 5 + "+")
 
+        if opcao == 6:
+            comando = "select * from clube"
+            cursor.execute(comando)
+            result = cursor.fetchall()
+            print(("+" + "-" * 20) * 5 + "+")
+            print(
+                "| idClube" + " " * 12 + "| nome" + " " * 15 + "| data de fundacao   " + "| idEstadio" + " " * 10 + "| idTecnico" + ' ' * 10 + "|")
+            for linha in result:
+                print(("+" + "-" * 20) * 5 + "+")
+                print("| " + str(linha[0]) + " " * (19 - len(str(linha[0]))), end="")
+                print("| " + str(linha[1]) + " " * (19 - len(str(linha[1]))), end="")
+                print("| " + str(linha[2]) + " " * (19 - len(str(linha[2]))), end="")
+                print("| " + str(linha[3]) + " " * (19 - len(str(linha[3]))), end="")
+                print("| " + str(linha[4]) + " " * (19 - len(str(linha[4]))) + "|")
+            print(("+" + "-" * 20) * 5 + "+")
+
         if opcao == 7:
             comando = "select * from jogador"
             cursor.execute(comando)
             result = cursor.fetchall()
             print(("+" + "-" * 40) * 8 + "+")
             print("| idJogador" + " "*30 + "| nome" + " "*35 +
-                  "| data de nascimento " + "| posicao" + " "*32, end="")
+                  "| data de nascimento" + " " * 21 + "| posicao" + " "*32, end="")
             print("| qtd de jogos" + ' '*27 + "| qtd de gols" + " "*28 +
                   "| qtd de assists" + " "*25 + "| idClube" + " "*32 + "|")
             for linha in result:
